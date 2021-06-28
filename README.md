@@ -145,44 +145,8 @@ slider6.oninput = function() {
 </body>
 </form>
 </html>
-------------------PHP------------------------
-<?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-$m1 = $_POST["m1"];
-$m2 = $_POST["m2"];
-$m3 = $_POST["m3"];
-$m4 = $_POST["m4"];
-$m5 = $_POST["m5"];
-$m6 = $_POST["m6"];
-
-}
-//To link in database...
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "control";
-
-// make Contact
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// test the Contact
-if (!$conn) {
-die("Connection failed: " . mysqli_connect_error());
-}
-
-$sql = "INSERT INTO mytable (m1, m2, m3 ,m4,m5,m6)
-VALUES ('$m1', '$m2', '$m3' , '$m4','$m4','$m6')";
-
-if (mysqli_query($conn, $sql)) {
-echo "The information has been sent successfully";
-} else {
-echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
-
-mysqli_close($conn);
-
-?>
 <img width="1321" alt="Screen Shot 1442-11-17 at 5 56 51 PM" src="https://user-images.githubusercontent.com/56722657/123549430-a554b380-d771-11eb-9d88-9d607ea84f50.png">
 
-<img width="1437" alt="Screen Shot 1442-11-17 at 5 47 38 PM" src="https://user-images.githubusercontent.com/56722657/123549668-97536280-d772-11eb-8315-f76ee511881e.png">
+
 
