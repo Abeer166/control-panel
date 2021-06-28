@@ -50,14 +50,13 @@ body {
 </style>
 </head>
 -------------HTML----------------
-<body>
+//<body>
 
 <form action="control.php" method="POST">
-  <body>
-
+ <body>
 <div class="center">
 
-  <h4>control panel</h4></div><br/>
+ <h4>control panel</h4></div><br/>
   <div class="center">
 
 motor1  <input id="myRange" name="m1" type="range"
@@ -66,14 +65,13 @@ motor1  <input id="myRange" name="m1" type="range"
 
 
  <div class="center">
-
 motor2  <input id="m2" name="m2" type="range"
  min="0" max="180" step="10" value="0" class="slider"
   /> <p>Value: <span id="m2m"></span></p></div><br/>
 
  <div class="center">
 
-motor3  <input id="m3" name="m3" type="range"
+//motor3  <input id="m3" name="m3" type="range"
  min="0" max="180" step="10" value="0" class="slider"
   /><p>Value: <span id="mm"></span></p></div><br/>
 
@@ -145,6 +143,46 @@ slider6.oninput = function() {
 </body>
 </form>
 </html>
+Connect the database with html by php
+------------------PHP------------------------
+<?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$m1 = $_POST["m1"];
+$m2 = $_POST["m2"];
+$m3 = $_POST["m3"];
+$m4 = $_POST["m4"];
+$m5 = $_POST["m5"];
+$m6 = $_POST["m6"];
+
+}
+//To link in database...
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "control";
+
+// make Contact
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// test the Contact
+if (!$conn) {
+die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "INSERT INTO mytable (m1, m2, m3 ,m4,m5,m6)
+VALUES ('$m1', '$m2', '$m3' , '$m4','$m4','$m6')";
+
+if (mysqli_query($conn, $sql)) {
+echo "The information has been sent successfully";
+} else {
+echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+
+?>
+<img width="1437" alt="Screen Shot 1442-11-17 at 5 47 38 PM" src="https://user-images.githubusercontent.com/56722657/123677378-b5da5c00-d84d-11eb-96b1-708d0c07b2fb.png">
+
 
 <img width="1321" alt="Screen Shot 1442-11-17 at 5 56 51 PM" src="https://user-images.githubusercontent.com/56722657/123549430-a554b380-d771-11eb-9d88-9d607ea84f50.png">
 
